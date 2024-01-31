@@ -1,0 +1,106 @@
+﻿@using BookHotel.Areas.Admin.Services.Interfaces;
+@using BookHotel.Areas.Admin.Services.Models;
+@using BookHotel.Data;
+@using Microsoft.EntityFrameworkCore
+@inject ApplicationDbContext db
+@inject BookHotel.Areas.Admin.Services.Interfaces.IRoomService roomService
+@model BookHotel.Models.ReservationDetail
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Delete Reservation</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <h4>Reservation Detail</h4>
+    <hr />
+    <dl class="row">
+        @*         <dt class="col-sm-2">
+        @{
+        var user = "Misafir Üyelik Adı";
+        }
+        @Html.DisplayFor(model => user)
+        </dt>
+        <dd class="col-sm-10">
+        @{
+        string userName = Model.ApplicationUserId != null
+        ? (await db.ApplicationUser
+        .Where(r => r.Id == Model.ApplicationUserId)
+        .Select(r => r.Name)
+        .FirstOrDefaultAsync()) : "Otel Üyemiz Değildir.";
+
+        }
+        @Html.DisplayFor(model => userName)
+        </dd> *@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CheckIn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CheckOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CheckOut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        @*     <dt class="col-sm-2">
+        @{
+        var room = "Room Name";
+        }
+        @Html.DisplayFor(model => room)
+        </dt>
+        <dd class="col-sm-10">
+        @{
+        var roomName = await db.Rooms.Where(r => r.Id == Model.RoomId).Select(r => r.Name).FirstOrDefaultAsync();
+        }
+        @Html.DisplayFor(model => roomName)
+        </dd> *@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AdultCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AdultCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChildCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChildCount)
+        </dd>
+    </dl>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" name="reservationId" value="@ViewData["ReservationId"]" />
+        <input type="hidden" name="reservationDetailId" value="@ViewData["ReservationDetailId"]" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-area="admin" asp-controller="reservation" asp-action="Index">Back to List</a>
+    </form>
+</div>
+

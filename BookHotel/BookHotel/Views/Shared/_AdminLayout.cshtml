@@ -1,0 +1,168 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+@* Head Partial *@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hotel Admin Panel</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/adminweb/images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="~/adminweb/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    @* Preloader *@
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+
+
+    <div id="main-wrapper">
+
+        @* Navheader Partial *@
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a asp-area="Admin" asp-controller="Home">
+                    <b class="logo-abbr"><img src="~/adminweb/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="~/adminweb//images/logo-compact.png" alt=""></span>
+                    <span class="brand-title">
+                        <img src="~/adminweb/images/logo-text.png" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
+        @* Header Partial *@
+        <div class="header">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <div class="drop-down   d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Aranacak Kelimeyi Giriniz...">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li>
+                            <div class="pr-2 pr-sm-3 !important">
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <a class="border-end me-2 pe-2 !important" asp-area="Identity" asp-action="Manage" asp-controller="Account">Merhaba @User.Identity?.Name?.Split('@').FirstOrDefault()</a>
+                                    <a asp-area="Identity" asp-action="Logout" asp-controller="Account" ><i class="icon-key"></i> <span>Çıkış Yap</span></a>
+                                }
+                                else
+                                {
+                                    <a class="border-end me-2 pe-2" asp-area="Identity" asp-action="Login" asp-controller="Account">Giriş</a>
+                                    <a asp-area="Identity" asp-action="Register" asp-controller="Account">Üye Ol</a>
+                                }
+                                @* <img src="~/adminweb/images/user/ryan.jpg" height="40" width="40" alt=""> *@
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @* Sidebar partial *@
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li>
+                        <a href="/" aria-expanded="false">
+                            <i class="icon-plane menu-icon"></i><span class="nav-text">Siteye Git</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Home" aria-expanded="false">
+                            <i class="icon-magic-wand menu-icon"></i><span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="admin" asp-controller="hotel" asp-action="Index" aria-expanded="false">
+                            <i class="icon-home menu-icon"></i><span class="nav-text">Oteller</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="admin" asp-controller="reservation" asp-action="Index" aria-expanded="false">
+                            <i class="icon-calender menu-icon"></i><span class="nav-text">Rezervasyonlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="admin" asp-controller="room" asp-action="Index" aria-expanded="false">
+                            <i class="icon-home menu-icon"></i><span class="nav-text">Odalar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="admin" asp-controller="comment" asp-action="Index" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i><span class="nav-text">Yorumlar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-area="admin" asp-controller="user" asp-action="Index" aria-expanded="false">
+                            <i class="icon-people menu-icon"></i><span class="nav-text">Kullanıcılar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Identity" asp-action="Logout" asp-controller="Account" aria-expanded="false">
+                            <i class="icon-close menu-icon"></i><span class="nav-text">Çıkış Yap</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        @* Footer partial *@
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+    </div>
+    @* Script partial *@
+    <script src="~/adminweb/plugins/common/common.min.js"></script>
+    <script src="~/adminweb/js/custom.min.js"></script>
+    <script src="~/adminweb/js/settings.js"></script>
+    <script src="~/adminweb/js/gleek.js"></script>
+    <script src="~/adminweb/js/styleSwitcher.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+﻿@model BookHotel.Models.Comment
+@await Component.InvokeAsync("Guest", new { controllerName = "Comment", viewName = "CommentHeader" })
+@await Component.InvokeAsync("Guest", new { controllerName = "Comment", viewName = "Comment", commentModel = Model })

@@ -1,0 +1,91 @@
+﻿@model List<BookHotel.Models.Comment>
+
+@await Component.InvokeAsync("Guest", new { controllerName = "About", viewName = "AboutHeader" })
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h6 class="section-title text-start text-primary text-uppercase">Hakkımızda</h6>
+                <h1 class="mb-4">Hoş Geldiniz <span class="text-primary text-uppercase">Shine Otel</span></h1>
+                <p class="mb-4">
+                    Hoş Geldiniz!
+
+                    Gizemli atmosferi, konforlu konaklama seçenekleri ve sıcak bir misafirperverlik ile sizleri ağırlamaktan mutluluk duyuyoruz. Shine Otel, misafirlerine unutulmaz bir deneyim sunmak amacıyla tasarlanmış modern ve zarif bir oteldir.
+
+                    Biz Kimiz?
+
+                    Shine Otel, kaliteli hizmet anlayışını benimseyen, deneyimli ve güleryüzlü bir ekibin bir araya gelmesiyle oluşmuştur. Her bir çalışanımız, konuklarımızın konforunu ön planda tutarak, sıcak bir atmosfer ve rahat bir ortam yaratmaya kararlıdır.
+
+                    Konfor ve Tarz
+
+                    Modern ve şık tasarımıyla dikkat çeken odalarımızda, konuklarımızın ihtiyaçlarına cevap verecek şekilde özenle düzenlenmiş bir konaklama deneyimi sunuyoruz. Konforlu yataklar, çağdaş mobilyalar ve donanımlı banyolar, konaklamanızı daha keyifli hale getirmek için özenle seçilmiştir.
+
+                    Yerel Lezzetler ve Uluslararası Mutfak
+
+                    Otelimizin restoranında, yerel lezzetlerin yanı sıra uluslararası mutfağın en özel tatlarını da keşfetme fırsatınız olacak. Usta şeflerimiz, özenle seçilmiş malzemelerle hazırlanan lezzetli menülerini sunarak damak zevkinize hitap edecekler.
+
+                    Toplantı ve Etkinlik Alanları
+
+                    Shine Otel, iş seyahatleri, toplantılar ve etkinlikler için ideal bir mekan sunmaktadır. Modern donanımlara sahip toplantı salonları ve etkinlik düzenleme konusunda uzman ekibimiz, her türlü ihtiyacınıza cevap verecek şekilde hizmet vermektedir.
+
+                    Bizimle İletişime Geçin
+
+                    Sizleri Shine Otel'da ağırlamaktan mutluluk duyacağımızı bilmemizi isteriz. Her türlü soru, rezervasyon talepleri veya özel istekleriniz için bizimle iletişime geçmekten çekinmeyin. Misafir memnuniyeti bizim için önceliktir, sizleri ağırlamak için sabırsızlanıyoruz.
+
+                    Keyifli bir konaklama ve unutulmaz anılar yaşamanız dileğiyle!
+
+                    Saygılarımla,
+
+                    Shine Otel Ekibi
+                </p>
+                <div class="row g-3 pb-4">
+                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="border rounded p-1">
+                            <div class="border rounded text-center p-4">
+                                <i class="fa fa-hotel fa-2x text-primary mb-2"></i>
+                                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
+                                <p class="mb-0">Odalar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">
+                        <div class="border rounded p-1">
+                            <div class="border rounded text-center p-4">
+                                <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>
+                                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
+                                <p class="mb-0">Ekibimiz</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="border rounded p-1">
+                            <div class="border rounded text-center p-4">
+                                <i class="fa fa-users fa-2x text-primary mb-2"></i>
+                                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
+                                <p class="mb-0">Müşteriler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="">Daha Fazlasını Keşfet</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6 text-end">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="~/hotel-html-template/img/about-1.jpg" style="margin-top: 25%;">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="~/hotel-html-template/img/about-2.jpg">
+                    </div>
+                    <div class="col-12 text-center">
+                        <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="~/hotel-html-template/img/about-3.jpg">
+                    </div>
+                    <div class="col-6 text-start">
+                        @* <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="~/hotel-html-template/img/about-4.jpg"> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@await Component.InvokeAsync("Guest", new { controllerName = "Comment", viewName = "ShowComment", showCommentModel = Model }) 

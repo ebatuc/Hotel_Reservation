@@ -1,0 +1,91 @@
+﻿@model IEnumerable<BookHotel.Models.Rooms>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Odalar</h1>
+
+<p>
+    <a asp-action="Create" asp-area="Admin" asp-controller="Room" >Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BedCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BathCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wifi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Smoke)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.IsStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDelete)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <img src="~/images/rooms/@(String.IsNullOrEmpty(item.Image)?"empty.jpg":item.Image)" class="rounded" width="60px">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BedCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BathCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wifi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Smoke)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDelete)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

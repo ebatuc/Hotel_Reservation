@@ -1,0 +1,6 @@
+﻿@model List<BookHotel.Models.Rooms>
+@await Component.InvokeAsync("Guest", new { controllerName = "Home", viewName = "RoomHeader" })
+@await Component.InvokeAsync("Guest", new { controllerName = "Home", viewName = "Room", model = Model })
+
+
+
